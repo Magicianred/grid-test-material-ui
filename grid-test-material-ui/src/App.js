@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-// ---------------------------------
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,15 +6,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import MailIcon from "@material-ui/icons/Mail";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-import Divider from '@material-ui/core/Divider';
-
+import Divider from "@material-ui/core/Divider";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
 
 // ---------------------------------------------
 
 import "./App.css";
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,14 +40,27 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: "left",
   },
-  sidBarItems:{
-    display:"flex",
-    flexGrow:2
+  sidBarItems: {
+    display: "flex",
+    flexGrow: 2,
+    marginTop: "10px",
+    marginBottom: "10px",
   },
-  space:{
-    marginTop:"60px"
-  }
-
+  space: {
+    marginTop: "45px",
+  },
+  card: {
+    margin: "20px",
+    width: "250px",
+    backgroundColor: "#edf2fb",
+    height: "150px",
+  },
+  cardTitle: {
+    fontSize: 14,
+  },
+  appBar: {
+    backgroundColor: "#0075c4",
+  },
 }));
 
 function App() {
@@ -52,25 +70,40 @@ function App() {
     <div className="App">
       <CssBaseline />
       <Grid container spacing={0}>
+        {/* SideBar-Start */}
         <Grid item md={2} sm={3} xs={2}>
           <Paper className={classes.paper}>
             <div className={classes.space}></div>
-            <Divider/>
-            <div className={classes.sidBarItems}>Status</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <div className={classes.sidBarItems}>Dashboard</div>
-            <Divider/>
-
+            <List>
+              {["Account", "State", "Database", "Main Repo"].map(
+                (text, index) => (
+                  <ListItem button key={text}>
+                    <ListItemIcon>
+                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                )
+              )}
+            </List>
+            <Divider />
+            <List>
+              {["Dashboard", "Stat", "Report"].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
           </Paper>
         </Grid>
+        {/* SideBar-End */}
+
         <Grid item md={10} sm={9} xs={10}>
-          <AppBar position="static">
+          <AppBar position="static" className={classes.appBar}>
             <Toolbar>
               <IconButton
                 edge="start"
@@ -78,7 +111,7 @@ function App() {
                 color="inherit"
                 aria-label="menu"
               >
-                <MenuIcon />
+                <MenuIcon color="textSecondary" />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
                 My Application
@@ -86,7 +119,31 @@ function App() {
               <Button color="inherit">Login</Button>
             </Toolbar>
           </AppBar>
-          <Paper className={classes.paper}>cards and header</Paper>
+          {/* <Paper className={classes.paper}>cards and header</Paper> */}
+          {/* Card's Grid */}
+          <Grid container spacing={0.5}>
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography className={classes.cardTitle}>
+                  Some Lorem Ipsum...
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography className={classes.cardTitle}>
+                  Some Lorem Ipsum...
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography className={classes.cardTitle}>
+                  Some Lorem Ipsum...
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
         </Grid>
       </Grid>
     </div>
