@@ -18,6 +18,7 @@ import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import TextField from "@material-ui/core/TextField";
 
 // ---------------------------------------------
 
@@ -50,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "45px",
   },
   card: {
+    display:"flex",
+    flexDirection:"column",
+    textAlign:"left",
     margin: "20px",
     width: "250px",
     backgroundColor: "#edf2fb",
@@ -57,10 +61,20 @@ const useStyles = makeStyles((theme) => ({
   },
   cardTitle: {
     fontSize: 14,
+    fontWeight:"bold"
   },
   appBar: {
-    backgroundColor: "#0075c4",
+    backgroundColor: "#3ab795",
   },
+  form: {
+    marginTop: "5px",
+  },
+  btnStyle:{
+    width:"20px",
+    backgroundColor:"#a8d5e2",
+    marginTop:"10px",
+
+  }
 }));
 
 function App() {
@@ -126,6 +140,13 @@ function App() {
               <CardContent>
                 <Typography className={classes.cardTitle}>
                   Some Lorem Ipsum...
+                  <Divider />
+                  <form className={classes.form} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Type..." />
+                  </form>
+                  <Button className={classes.btnStyle}>
+                    ADD
+                  </Button>
                 </Typography>
               </CardContent>
             </Card>
@@ -133,6 +154,13 @@ function App() {
               <CardContent>
                 <Typography className={classes.cardTitle}>
                   Some Lorem Ipsum...
+                  <Divider />
+                  <form className={classes.form} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Type..." />
+                  </form>
+                  <Button className={classes.btnStyle}>
+                    ADD
+                  </Button>
                 </Typography>
               </CardContent>
             </Card>
@@ -140,6 +168,41 @@ function App() {
               <CardContent>
                 <Typography className={classes.cardTitle}>
                   Some Lorem Ipsum...
+                  <Divider />
+                  <form className={classes.form} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Type..." />
+                  </form>
+                  <Button className={classes.btnStyle}>
+                    ADD
+                  </Button>
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography className={classes.cardTitle}>
+                  Some Lorem Ipsum...
+                  <Divider />
+                  <form className={classes.form} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Type..." />
+                  </form>
+                  <Button className={classes.btnStyle}>
+                    ADD
+                  </Button>
+                </Typography>
+              </CardContent>
+            </Card>
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography className={classes.cardTitle}>
+                  Some Lorem Ipsum...
+                  <Divider />
+                  <form className={classes.form} noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Type..." />
+                  </form>
+                  <Button className={classes.btnStyle}>
+                    ADD
+                  </Button>
                 </Typography>
               </CardContent>
             </Card>
