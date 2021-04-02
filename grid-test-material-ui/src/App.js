@@ -19,11 +19,18 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
-
-// ---------------------------------------------
-
+import DeleteIcon from "@material-ui/icons/Delete";
+import AddCircleOutlineSharpIcon from "@material-ui/icons/AddCircleOutlineSharp";
+import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
+import FindInPageRoundedIcon from "@material-ui/icons/FindInPageRounded";
+import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
+import ArchiveRoundedIcon from "@material-ui/icons/ArchiveRounded";
+import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
+import TimelineRoundedIcon from "@material-ui/icons/TimelineRounded";
+import InsertDriveFileRoundedIcon from "@material-ui/icons/InsertDriveFileRounded";
+import BarChartRoundedIcon from "@material-ui/icons/BarChartRounded";
 import "./App.css";
-
+// ---------------------------------------------
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -37,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
+  appBarTitle: {
     flexGrow: 1,
     textAlign: "left",
+    fontWeight: "bold",
   },
   sidBarItems: {
     display: "flex",
@@ -51,32 +59,42 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "45px",
   },
   card: {
-    display:"flex",
-    flexDirection:"column",
-    textAlign:"left",
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
     margin: "20px",
     width: "250px",
-    backgroundColor: "#edf2fb",
+    backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
+    // backgroundColor: "#f4f4f6",
     height: "150px",
   },
   cardTitle: {
     fontSize: 14,
-    fontWeight:"bold"
+    fontWeight: "bold",
+    color: "rgba(0, 0, 0, 0.54)",
   },
   appBar: {
-    backgroundColor: "#3ab795",
+    backgroundColor: "#b2ebf2",
   },
   form: {
     marginTop: "5px",
   },
-  btnStyle:{
-    width:"20px",
-    backgroundColor:"#a8d5e2",
-    marginTop:"10px",
-
-  }
+  btnStyle: {
+    marginTop: "10px",
+    borderRadius: "50%",
+  },
+  btnHolder: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: "5px",
+  },
+  AddCircleOutlineSharpIcon: {
+    color: "rgba(0, 0, 0, 0.54)",
+  },
 }));
-
+// ---------------------------------------------
+// App function component
 function App() {
   const classes = useStyles();
 
@@ -89,11 +107,14 @@ function App() {
           <Paper className={classes.paper}>
             <div className={classes.space}></div>
             <List>
-              {["Account", "State", "Database", "Main Repo"].map(
+              {["Account", "Status", "Database", "Archive"].map(
                 (text, index) => (
                   <ListItem button key={text}>
                     <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                      {index === 0 ? <PersonOutlineRoundedIcon /> : true}
+                      {index === 1 ? <FindInPageRoundedIcon /> : true}
+                      {index === 2 ? <StorageRoundedIcon /> : true}
+                      {index === 3 ? <ArchiveRoundedIcon /> : true}
                     </ListItemIcon>
                     <ListItemText primary={text} />
                   </ListItem>
@@ -102,20 +123,24 @@ function App() {
             </List>
             <Divider />
             <List>
-              {["Dashboard", "Stat", "Report"].map((text, index) => (
-                <ListItem button key={text}>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              ))}
+              {["Dashboard", "Chart", "Document", "Reports"].map(
+                (text, index) => (
+                  <ListItem button key={text}>
+                    <ListItemIcon>
+                      {index === 0 ? <DashboardRoundedIcon /> : true}
+                      {index === 1 ? <TimelineRoundedIcon /> : true}
+                      {index === 2 ? <InsertDriveFileRoundedIcon /> : true}
+                      {index === 3 ? <BarChartRoundedIcon /> : true}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                )
+              )}
             </List>
             <Divider />
           </Paper>
         </Grid>
         {/* SideBar-End */}
-
         <Grid item md={10} sm={9} xs={10}>
           <AppBar position="static" className={classes.appBar}>
             <Toolbar>
@@ -127,10 +152,18 @@ function App() {
               >
                 <MenuIcon color="textSecondary" />
               </IconButton>
-              <Typography variant="h6" className={classes.title}>
+              <Typography
+                variant="h6"
+                className={classes.appBarTitle}
+                color="textSecondary"
+              >
                 My Application
               </Typography>
-              <Button color="inherit">Login</Button>
+              <Button
+                style={{ fontWeight: "bold", color: "rgba(0, 0, 0, 0.54)" }}
+              >
+                Login
+              </Button>
             </Toolbar>
           </AppBar>
           {/* <Paper className={classes.paper}>cards and header</Paper> */}
@@ -144,9 +177,16 @@ function App() {
                   <form className={classes.form} noValidate autoComplete="off">
                     <TextField id="standard-basic" label="Type..." />
                   </form>
-                  <Button className={classes.btnStyle}>
-                    ADD
-                  </Button>
+                  <div className={classes.btnHolder}>
+                    <Button size="small" className={classes.btnStyle}>
+                      <AddCircleOutlineSharpIcon
+                        className={classes.AddCircleOutlineSharpIcon}
+                      />
+                    </Button>
+                    <IconButton aria-label="delete" className={classes.margin}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </div>
                 </Typography>
               </CardContent>
             </Card>
@@ -158,9 +198,16 @@ function App() {
                   <form className={classes.form} noValidate autoComplete="off">
                     <TextField id="standard-basic" label="Type..." />
                   </form>
-                  <Button className={classes.btnStyle}>
-                    ADD
-                  </Button>
+                  <div className={classes.btnHolder}>
+                    <Button size="small">
+                      <AddCircleOutlineSharpIcon
+                        className={classes.AddCircleOutlineSharpIcon}
+                      />
+                    </Button>
+                    <IconButton aria-label="delete" className={classes.margin}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </div>
                 </Typography>
               </CardContent>
             </Card>
@@ -172,9 +219,16 @@ function App() {
                   <form className={classes.form} noValidate autoComplete="off">
                     <TextField id="standard-basic" label="Type..." />
                   </form>
-                  <Button className={classes.btnStyle}>
-                    ADD
-                  </Button>
+                  <div className={classes.btnHolder}>
+                    <Button size="small">
+                      <AddCircleOutlineSharpIcon
+                        className={classes.AddCircleOutlineSharpIcon}
+                      />
+                    </Button>
+                    <IconButton aria-label="delete" className={classes.margin}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </div>
                 </Typography>
               </CardContent>
             </Card>
@@ -186,9 +240,16 @@ function App() {
                   <form className={classes.form} noValidate autoComplete="off">
                     <TextField id="standard-basic" label="Type..." />
                   </form>
-                  <Button className={classes.btnStyle}>
-                    ADD
-                  </Button>
+                  <div className={classes.btnHolder}>
+                    <Button size="small">
+                      <AddCircleOutlineSharpIcon
+                        className={classes.AddCircleOutlineSharpIcon}
+                      />
+                    </Button>
+                    <IconButton aria-label="delete" className={classes.margin}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </div>
                 </Typography>
               </CardContent>
             </Card>
@@ -200,9 +261,16 @@ function App() {
                   <form className={classes.form} noValidate autoComplete="off">
                     <TextField id="standard-basic" label="Type..." />
                   </form>
-                  <Button className={classes.btnStyle}>
-                    ADD
-                  </Button>
+                  <div className={classes.btnHolder}>
+                    <Button size="small">
+                      <AddCircleOutlineSharpIcon
+                        className={classes.AddCircleOutlineSharpIcon}
+                      />
+                    </Button>
+                    <IconButton aria-label="delete" className={classes.margin}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </div>
                 </Typography>
               </CardContent>
             </Card>
