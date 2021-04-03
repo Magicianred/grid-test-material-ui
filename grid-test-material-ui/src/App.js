@@ -16,7 +16,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import FindInPageRoundedIcon from "@material-ui/icons/FindInPageRounded";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { fade,makeStyles, useTheme } from "@material-ui/core/styles";
 import BarChartRoundedIcon from "@material-ui/icons/BarChartRounded";
 import TimelineIcon from "@material-ui/icons/Timeline";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -29,6 +29,8 @@ import AddCircleOutlineSharpIcon from "@material-ui/icons/AddCircleOutlineSharp"
 import Button from "@material-ui/core/Button";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import StorageIcon from "@material-ui/icons/Storage";
+import SearchIcon from "@material-ui/icons/Search";
+import InputBase from '@material-ui/core/InputBase';
 
 
 // --------------------------------------------------------------------
@@ -61,8 +63,14 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor:"#2f3e46"
-
+    backgroundColor: "#2f3e46",
+  },
+  toolbarTitle: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: "20px",
+    marginTop: "-45px",
   },
   card: {
     display: "flex",
@@ -96,7 +104,54 @@ const useStyles = makeStyles((theme) => ({
   listItemTextAndIconColor: {
     color: "#fff",
   },
- 
+  list: {
+    padding: "10px",
+  },
+  listItem: {
+    "&:hover": {
+      backgroundColor: "#0081A7",
+    },
+  },
+  search: {
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputRoot: {
+    color: "inherit",
+    
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
 }));
 // -----------------------------------------------------------------------
 function App(props) {
@@ -112,10 +167,11 @@ function App(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Divider />
-      <List>
+      <ListItem className={classes.toolbarTitle}>Ali Fard</ListItem>
+      <Divider variant="middle" />
+      <List className={classes.list}>
         {["Profile", "Status", "Dashboard", "Database"].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} className={classes.listItem}>
             <ListItemIcon className={classes.listItemTextAndIconColor}>
               {index === 0 ? <PersonOutlineRoundedIcon /> : true}
               {index === 1 ? <FindInPageRoundedIcon /> : true}
@@ -129,10 +185,10 @@ function App(props) {
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
+      <Divider variant="middle" style={{ color: "#fff" }} />
+      <List className={classes.list}>
         {["Reports", "Charts", "Integrations"].map((text, index) => (
-          <ListItem button key={text}>
+          <ListItem button key={text} className={classes.listItem}>
             <ListItemIcon className={classes.listItemTextAndIconColor}>
               {index === 0 ? <BarChartRoundedIcon /> : true}
               {index === 1 ? <TimelineIcon /> : true}
@@ -166,8 +222,21 @@ function App(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Ali Fard's Application
+            API Application
           </Typography>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ "aria-label": "search" }}
+            />
+          </div>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
