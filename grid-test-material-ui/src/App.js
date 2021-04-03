@@ -203,6 +203,7 @@ function App(props) {
           </ListItem>
         ))}
       </List>
+      <Divider variant="middle" />
     </div>
   );
 
