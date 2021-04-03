@@ -31,6 +31,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import StorageIcon from "@material-ui/icons/Storage";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from '@material-ui/core/InputBase';
+import bgDrawer from './assets/bgDrawer.png';
 
 
 // --------------------------------------------------------------------
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#0081a7",
+    backgroundColor: "#ddbea9",
     color: "#fff",
   },
   menuButton: {
@@ -64,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: "#2f3e46",
+    backgroundImage:`url(${bgDrawer})` ,
+    opacity:"0.7"
   },
   toolbarTitle: {
     color: "#fff",
@@ -76,8 +79,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     textAlign: "left",
-    margin: "80px",
-    width: "250px",
+    marginTop: "80px",
+    width: "300px",
     backgroundColor: "#fff",
     height: "150px",
   },
@@ -109,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     "&:hover": {
-      backgroundColor: "#0081A7",
+      backgroundColor: "#ddbea9",
     },
   },
   search: {
@@ -185,7 +188,7 @@ function App(props) {
           </ListItem>
         ))}
       </List>
-      <Divider variant="middle" style={{ color: "#fff" }} />
+      <Divider variant="middle"/>
       <List className={classes.list}>
         {["Reports", "Charts", "Integrations"].map((text, index) => (
           <ListItem button key={text} className={classes.listItem}>
