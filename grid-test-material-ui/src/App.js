@@ -7,19 +7,15 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import FindInPageRoundedIcon from "@material-ui/icons/FindInPageRounded";
-import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
-import ArchiveRoundedIcon from "@material-ui/icons/ArchiveRounded";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import BarChartRoundedIcon from "@material-ui/icons/BarChartRounded";
 import TimelineIcon from "@material-ui/icons/Timeline";
@@ -31,6 +27,9 @@ import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddCircleOutlineSharpIcon from "@material-ui/icons/AddCircleOutlineSharp";
 import Button from "@material-ui/core/Button";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import StorageIcon from "@material-ui/icons/Storage";
+
 
 // --------------------------------------------------------------------
 const drawerWidth = 240;
@@ -50,8 +49,8 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#b2ebf2",
-    color: "rgba(0, 0, 0, 0.54)",
+    backgroundColor: "#0081a7",
+    color: "#fff",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -62,6 +61,8 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor:"#2f3e46"
+
   },
   card: {
     display: "flex",
@@ -69,8 +70,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     margin: "80px",
     width: "250px",
-    backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
-    // backgroundColor: "#f4f4f6",
+    backgroundColor: "#fff",
     height: "150px",
   },
   cardTitle: {
@@ -93,6 +93,10 @@ const useStyles = makeStyles((theme) => ({
   AddCircleOutlineSharpIcon: {
     color: "rgba(0, 0, 0, 0.54)",
   },
+  listItemTextAndIconColor: {
+    color: "#fff",
+  },
+ 
 }));
 // -----------------------------------------------------------------------
 function App(props) {
@@ -112,13 +116,16 @@ function App(props) {
       <List>
         {["Profile", "Status", "Dashboard", "Database"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
+            <ListItemIcon className={classes.listItemTextAndIconColor}>
               {index === 0 ? <PersonOutlineRoundedIcon /> : true}
               {index === 1 ? <FindInPageRoundedIcon /> : true}
-              {index === 2 ? <StorageRoundedIcon /> : true}
-              {index === 3 ? <ArchiveRoundedIcon /> : true}
+              {index === 2 ? <DashboardIcon /> : true}
+              {index === 3 ? <StorageIcon /> : true}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText
+              primary={text}
+              className={classes.listItemTextAndIconColor}
+            />
           </ListItem>
         ))}
       </List>
@@ -126,12 +133,15 @@ function App(props) {
       <List>
         {["Reports", "Charts", "Integrations"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
+            <ListItemIcon className={classes.listItemTextAndIconColor}>
               {index === 0 ? <BarChartRoundedIcon /> : true}
               {index === 1 ? <TimelineIcon /> : true}
               {index === 2 ? <DescriptionIcon /> : true}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText
+              primary={text}
+              className={classes.listItemTextAndIconColor}
+            />
           </ListItem>
         ))}
       </List>
