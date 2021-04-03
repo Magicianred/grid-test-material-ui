@@ -16,7 +16,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import FindInPageRoundedIcon from "@material-ui/icons/FindInPageRounded";
-import { fade,makeStyles, useTheme } from "@material-ui/core/styles";
+import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
 import BarChartRoundedIcon from "@material-ui/icons/BarChartRounded";
 import TimelineIcon from "@material-ui/icons/Timeline";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -30,9 +30,8 @@ import Button from "@material-ui/core/Button";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import StorageIcon from "@material-ui/icons/Storage";
 import SearchIcon from "@material-ui/icons/Search";
-import InputBase from '@material-ui/core/InputBase';
-import bgDrawer from './assets/bgDrawer.png';
-
+import InputBase from "@material-ui/core/InputBase";
+import bgDrawer from "./assets/bgDrawer.png";
 
 // --------------------------------------------------------------------
 const drawerWidth = 240;
@@ -52,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
-    backgroundColor: "#ddbea9",
-    color: "#fff",
+    backgroundColor: "#ddd5d0",
+    color: "rgba(0, 0, 0, 0.54)",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -65,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: "#2f3e46",
-    backgroundImage:`url(${bgDrawer})` ,
-    opacity:"0.7"
+    backgroundImage: `url(${bgDrawer})`,
+    opacity: "0.7",
   },
   toolbarTitle: {
     color: "#fff",
@@ -113,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     "&:hover": {
       backgroundColor: "#ddbea9",
+      opacity: 1,
     },
   },
   search: {
@@ -140,7 +140,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: "inherit",
-    
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -188,7 +187,7 @@ function App(props) {
           </ListItem>
         ))}
       </List>
-      <Divider variant="middle"/>
+      <Divider variant="middle" />
       <List className={classes.list}>
         {["Reports", "Charts", "Integrations"].map((text, index) => (
           <ListItem button key={text} className={classes.listItem}>
@@ -274,90 +273,98 @@ function App(props) {
         </Hidden>
       </nav>
       <Grid container spacing={0}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.cardTitle}>
-              Some Lorem Ipsum...
-              <Divider />
-              <form className={classes.form} noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Type..." />
-              </form>
-              <div className={classes.btnHolder}>
-                <Button size="small" className={classes.btnStyle}>
-                  <AddCircleOutlineSharpIcon
-                    className={classes.AddCircleOutlineSharpIcon}
-                  />
-                </Button>
-                <IconButton aria-label="delete" className={classes.margin}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </div>
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.cardTitle}>
-              Some Lorem Ipsum...
-              <Divider />
-              <form className={classes.form} noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Type..." />
-              </form>
-              <div className={classes.btnHolder}>
-                <Button size="small" className={classes.btnStyle}>
-                  <AddCircleOutlineSharpIcon
-                    className={classes.AddCircleOutlineSharpIcon}
-                  />
-                </Button>
-                <IconButton aria-label="delete" className={classes.margin}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </div>
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.cardTitle}>
-              Some Lorem Ipsum...
-              <Divider />
-              <form className={classes.form} noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Type..." />
-              </form>
-              <div className={classes.btnHolder}>
-                <Button size="small" className={classes.btnStyle}>
-                  <AddCircleOutlineSharpIcon
-                    className={classes.AddCircleOutlineSharpIcon}
-                  />
-                </Button>
-                <IconButton aria-label="delete" className={classes.margin}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </div>
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography className={classes.cardTitle}>
-              Some Lorem Ipsum...
-              <Divider />
-              <form className={classes.form} noValidate autoComplete="off">
-                <TextField id="standard-basic" label="Type..." />
-              </form>
-              <div className={classes.btnHolder}>
-                <Button size="small" className={classes.btnStyle}>
-                  <AddCircleOutlineSharpIcon
-                    className={classes.AddCircleOutlineSharpIcon}
-                  />
-                </Button>
-                <IconButton aria-label="delete" className={classes.margin}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </div>
-            </Typography>
-          </CardContent>
-        </Card>
+        <Grid item xs={3}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography className={classes.cardTitle}>
+                Some Lorem Ipsum...
+                <Divider />
+                <form className={classes.form} noValidate autoComplete="off">
+                  <TextField id="standard-basic" label="Type..." />
+                </form>
+                <div className={classes.btnHolder}>
+                  <Button size="small" className={classes.btnStyle}>
+                    <AddCircleOutlineSharpIcon
+                      className={classes.AddCircleOutlineSharpIcon}
+                    />
+                  </Button>
+                  <IconButton aria-label="delete" className={classes.margin}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </div>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4}>
+          {/* <Card className={classes.card}>
+            <CardContent>
+              <Typography className={classes.cardTitle}>
+                Some Lorem Ipsum...
+                <Divider />
+                <form className={classes.form} noValidate autoComplete="off">
+                  <TextField id="standard-basic" label="Type..." />
+                </form>
+                <div className={classes.btnHolder}>
+                  <Button size="small" className={classes.btnStyle}>
+                    <AddCircleOutlineSharpIcon
+                      className={classes.AddCircleOutlineSharpIcon}
+                    />
+                  </Button>
+                  <IconButton aria-label="delete" className={classes.margin}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </div>
+              </Typography>
+            </CardContent>
+          </Card> */}
+        </Grid>
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography className={classes.cardTitle}>
+                Some Lorem Ipsum...
+                <Divider />
+                <form className={classes.form} noValidate autoComplete="off">
+                  <TextField id="standard-basic" label="Type..." />
+                </form>
+                <div className={classes.btnHolder}>
+                  <Button size="small" className={classes.btnStyle}>
+                    <AddCircleOutlineSharpIcon
+                      className={classes.AddCircleOutlineSharpIcon}
+                    />
+                  </Button>
+                  <IconButton aria-label="delete" className={classes.margin}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </div>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={4}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography className={classes.cardTitle}>
+                Some Lorem Ipsum...
+                <Divider />
+                <form className={classes.form} noValidate autoComplete="off">
+                  <TextField id="standard-basic" label="Type..." />
+                </form>
+                <div className={classes.btnHolder}>
+                  <Button size="small" className={classes.btnStyle}>
+                    <AddCircleOutlineSharpIcon
+                      className={classes.AddCircleOutlineSharpIcon}
+                    />
+                  </Button>
+                  <IconButton aria-label="delete" className={classes.margin}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </div>
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
     </div>
   );
