@@ -31,7 +31,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import StorageIcon from "@material-ui/icons/Storage";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import bgDrawer from "./assets/bgDrawer.png";
+import bgDrawer from "../assets/bgDrawer.png";
 
 // --------------------------------------------------------------------
 const drawerWidth = 240;
