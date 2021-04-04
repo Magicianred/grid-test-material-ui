@@ -27,8 +27,8 @@
         scroll-behavior: smooth;
       }
       body {
-        background-image: url(./swiss-alps-night.jpg);
-        background-repeat: no-repeat;
+        /* background-image: url(./swiss-alps-night.jpg); */
+        /* background-repeat: no-repeat; */
         animation: fadeIn ease 1.5s;
         -webkit-animation: fadeIn ease 2s;
         -moz-animation: fadeIn ease 2s;
@@ -78,6 +78,21 @@
         }
         100% {
           opacity: 1;
+        }
+      }
+      /* -------------------------- */
+      .background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1;
+      }
+      @media only screen and (max-width: 56.5em) {
+        .background-video {
+          width: auto;
+          height: 100vh;
         }
       }
       /* ---------footer----------- */
@@ -140,6 +155,13 @@
       #info {
         font-size: 15px;
       }
+      .footerHolder {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin-left: 100px;
+      }
     </style>
     <title>API Application</title>
   </head>
@@ -147,8 +169,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <video autoplay muted loop id="myVideo" class="background-video">
+      <source src="./myVid.mp4" type="video/mp4" />
+    </video>
     <!-- footer -->
-    <div class="item5">
+    <div class="item5 footerHolder">
       <footer class="footer-1">
         <div class="main-footer">
           <div class="container">
