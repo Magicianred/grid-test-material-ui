@@ -63,9 +63,9 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#2f3e46",
-    backgroundImage: `url(${bgDrawer})`,
-    opacity: "0.7",
+    backgroundColor: "#000b1f",
+    // backgroundImage: `url(${bgDrawer})`,
+    opacity: "1",
   },
   toolbarTitle: {
     color: "#fff",
@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     textAlign: "left",
     marginTop: "80px",
-    width: "300px",
+    width: "350px",
     backgroundColor: "#fff",
     height: "150px",
   },
@@ -105,14 +105,20 @@ const useStyles = makeStyles((theme) => ({
   },
   listItemTextAndIconColor: {
     color: "#fff",
+    // "&:hover": {
+    //   opacity: 1,
+    //   color:"#000"
+
+    // },
   },
   list: {
     padding: "10px",
   },
   listItem: {
     "&:hover": {
-      backgroundColor: "#ddbea9",
+      backgroundColor: "#57cc99",
       opacity: 1,
+      color: "#000",
     },
   },
   search: {
@@ -120,7 +126,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: "#cfcfcf",
     },
     marginLeft: 0,
     width: "100%",
@@ -213,35 +219,6 @@ function App(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            API Application
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
@@ -273,8 +250,38 @@ function App(props) {
           </Drawer>
         </Hidden>
       </nav>
+      {/* ------------------------------------------------------------- */}
       <Grid container spacing={0}>
-        <Grid item xs={3}>
+        <Grid item md={12}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon style={{color:"#fff"}}/>
+            </IconButton>
+            <Typography variant="h6" noWrap style={{ color: "#fff" }}>
+              API Application
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
+            </div>
+          </Toolbar>
+        </Grid>
+        <Grid item xs={4}>
           <Card className={classes.card}>
             <CardContent>
               <Typography className={classes.cardTitle}>
@@ -296,29 +303,6 @@ function App(props) {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={4}>
-          {/* <Card className={classes.card}>
-            <CardContent>
-              <Typography className={classes.cardTitle}>
-                Some Lorem Ipsum...
-                <Divider />
-                <form className={classes.form} noValidate autoComplete="off">
-                  <TextField id="standard-basic" label="Type..." />
-                </form>
-                <div className={classes.btnHolder}>
-                  <Button size="small" className={classes.btnStyle}>
-                    <AddCircleOutlineSharpIcon
-                      className={classes.AddCircleOutlineSharpIcon}
-                    />
-                  </Button>
-                  <IconButton aria-label="delete" className={classes.margin}>
-                    <DeleteIcon fontSize="small" />
-                  </IconButton>
-                </div>
-              </Typography>
-            </CardContent>
-          </Card> */}
         </Grid>
         <Grid item xs={4}>
           <Card className={classes.card}>
