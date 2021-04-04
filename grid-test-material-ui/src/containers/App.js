@@ -34,7 +34,7 @@ import InputBase from "@material-ui/core/InputBase";
 import bgDrawer from "../assets/bgDrawer.png";
 
 // --------------------------------------------------------------------
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -264,7 +264,7 @@ function App(props) {
               <MenuIcon style={{color:"#fff"}}/>
             </IconButton>
             <Typography variant="h6" noWrap style={{ color: "#fff" }}>
-              API Application
+              App's Name
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
