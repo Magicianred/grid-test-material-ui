@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Divider from "@material-ui/core/Divider";
@@ -31,7 +32,10 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import StorageIcon from "@material-ui/icons/Storage";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import bgDrawer from "../assets/bgDrawer.png";
+import MailIcon from "@material-ui/icons/Mail";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import Badge from "@material-ui/core/Badge";
+import MenuItem from "@material-ui/core/MenuItem";
 
 // --------------------------------------------------------------------
 const drawerWidth = 220;
@@ -64,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: "#000b1f",
-    // backgroundImage: `url(${bgDrawer})`,
     opacity: "1",
   },
   toolbarTitle: {
@@ -160,6 +163,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  divider: {
+    // Theme Color, or use css color in quote
+    background: "#fff",
+  },
 }));
 // -----------------------------------------------------------------------
 function App(props) {
@@ -176,7 +183,7 @@ function App(props) {
     <div>
       <div className={classes.toolbar} />
       <ListItem className={classes.toolbarTitle}>Ali Fard</ListItem>
-      <Divider variant="middle" />
+      <Divider variant="middle" className={classes.divider} />
       <List className={classes.list}>
         {["Profile", "Status", "Dashboard", "Database"].map((text, index) => (
           <ListItem button key={text} className={classes.listItem}>
@@ -193,7 +200,6 @@ function App(props) {
           </ListItem>
         ))}
       </List>
-      <Divider variant="middle" />
       <List className={classes.list}>
         {["Reports", "Charts", "Integrations"].map((text, index) => (
           <ListItem button key={text} className={classes.listItem}>
@@ -209,7 +215,6 @@ function App(props) {
           </ListItem>
         ))}
       </List>
-      <Divider variant="middle" />
     </div>
   );
 
@@ -261,7 +266,7 @@ function App(props) {
               onClick={handleDrawerToggle}
               className={classes.menuButton}
             >
-              <MenuIcon style={{color:"#fff"}}/>
+              <MenuIcon style={{ color: "#fff" }} />
             </IconButton>
             <Typography variant="h6" noWrap style={{ color: "#fff" }}>
               App's Name
@@ -279,6 +284,39 @@ function App(props) {
                 inputProps={{ "aria-label": "search" }}
               />
             </div>
+            <MenuItem>
+              <IconButton
+                aria-label="show 2 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={2} color="secondary">
+                  <MailIcon style={{ color: "#fff" }} />
+                </Badge>
+              </IconButton>
+              <p>Notifications</p>
+            </MenuItem>
+            <MenuItem>
+              <IconButton
+                aria-label="show 11 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={5} color="secondary">
+                  <NotificationsIcon style={{ color: "#fff" }} />
+                </Badge>
+              </IconButton>
+              <p>Notifications</p>
+            </MenuItem>
+            <MenuItem>
+              <IconButton
+                aria-label="show 2 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={2} color="secondary">
+                  <AccountCircle style={{ color: "#fff" }} />
+                </Badge>
+              </IconButton>
+              <p>Notifications</p>
+            </MenuItem>
           </Toolbar>
         </Grid>
         <Grid item xs={4}>
