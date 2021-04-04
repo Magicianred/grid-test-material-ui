@@ -38,7 +38,7 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 
 // --------------------------------------------------------------------
-const drawerWidth = 220;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#000b1f",
+    backgroundColor: "#0a151a",
     opacity: "1",
   },
   toolbarTitle: {
@@ -85,11 +85,18 @@ const useStyles = makeStyles((theme) => ({
     width: "350px",
     backgroundColor: "#fff",
     height: "150px",
+    marginLeft: "25px",
   },
   cardTitle: {
     fontSize: 14,
     fontWeight: "bold",
     color: "rgba(0, 0, 0, 0.54)",
+  },
+  cardHolder: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap:"wrap",
+    margin: "auto",
   },
   form: {
     marginTop: "5px",
@@ -285,10 +292,7 @@ function App(props) {
               />
             </div>
             <MenuItem>
-              <IconButton
-                aria-label="show 2 new notifications"
-                color="inherit"
-              >
+              <IconButton aria-label="show 2 new notifications" color="inherit">
                 <Badge badgeContent={2} color="secondary">
                   <MailIcon style={{ color: "#fff" }} />
                 </Badge>
@@ -307,10 +311,7 @@ function App(props) {
               <p>Notifications</p>
             </MenuItem>
             <MenuItem>
-              <IconButton
-                aria-label="show 2 new notifications"
-                color="inherit"
-              >
+              <IconButton aria-label="show 2 new notifications" color="inherit">
                 <Badge badgeContent={2} color="secondary">
                   <AccountCircle style={{ color: "#fff" }} />
                 </Badge>
@@ -319,7 +320,7 @@ function App(props) {
             </MenuItem>
           </Toolbar>
         </Grid>
-        <Grid item xs={4}>
+        <div className={classes.cardHolder}>
           <Card className={classes.card}>
             <CardContent>
               <Typography className={classes.cardTitle}>
@@ -341,8 +342,6 @@ function App(props) {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={4}>
           <Card className={classes.card}>
             <CardContent>
               <Typography className={classes.cardTitle}>
@@ -364,8 +363,6 @@ function App(props) {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={4}>
           <Card className={classes.card}>
             <CardContent>
               <Typography className={classes.cardTitle}>
@@ -387,7 +384,7 @@ function App(props) {
               </Typography>
             </CardContent>
           </Card>
-        </Grid>
+        </div>
       </Grid>
     </div>
   );
